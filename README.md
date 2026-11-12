@@ -2,7 +2,7 @@
 
 # 8-Bit UART Transmitter (8N1, 9600 baud)
 
-A small [Tiny Tapeout](https://tinytapeout.com) ASIC for the SKY130 process (TTSKY26d shuttle). It takes an 8-bit
+A small [Tiny Tapeout](https://tinytapeout.com) ASIC for the SKY130 process (TTSKY26e shuttle). It takes an 8-bit
 parallel byte and sends it out as a standard UART serial frame, so any USB-to-UART adapter or Arduino can receive it.
 
 - **Frame:** 8N1 (1 start bit, 8 data bits LSB first, no parity, 1 stop bit)
