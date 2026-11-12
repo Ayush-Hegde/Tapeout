@@ -9,7 +9,7 @@ parallel byte and sends it out as a standard UART serial frame, so any USB-to-UA
 - **Clock:** 10 MHz
 - **Baud rate:** 9600 (10 MHz / 1042, 0.03% error)
 - **Size:** 1x1 tile
-- **Layout viewer:** https://ayush-hegde.github.io/tapeout-uart-tx/
+- **Layout viewer:** https://ayush-hegde.github.io/Tapeout/
 - **Datasheet:** [docs/info.md](docs/info.md)
 
 ## How it works
