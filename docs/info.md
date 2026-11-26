@@ -60,4 +60,4 @@ of Electronics and Communication Engineering (ECE) for providing the necessary r
 
 Special thanks to Dr. H V Ravish Aradhya (HoD - ECE), Dr. K R Usha Rani (Associate Dean - PG), Dr. K. S. Geetha
 (Vice Principal) and Dr. K. N. Subramanya (Principal) for their constant encouragement and support in facilitating
-this Tiny Tapeout SKY26C submission.
+this Tiny Tapeout SKY26e submission.
