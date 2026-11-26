@@ -1,7 +1,7 @@
 # Tiny Tapeout project information
 project:
   title:        "8-Bit UART Transmitter (8N1, 9600 baud)"      # Project title
-  author:       "Ayush Hegde"      # Your name
+  author:       "Ayush Hegde, Aryan B Naik, Shylashree N, RV College of Engineering"      # Your name
   description:  "Converts an 8-bit parallel byte into a 9600 baud 8N1 UART serial frame"      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     10000000      # Clock frequency in Hz (or 0 if not applicable)
