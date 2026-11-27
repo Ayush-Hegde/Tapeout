@@ -52,6 +52,33 @@ python run_local.py  # Windows, no make needed
 
 The GitHub Actions workflows run the same tests on the RTL and on the gate-level netlist after hardening.
 
+### Simulation waveforms
+
+One complete frame for 0x55: start bit, D0 to D7 (LSB first), stop bit. Each bit lasts 1042 clocks (104.2 µs).
+
+![Single UART frame for 0x55](docs/images/01_single_frame_0x55.png)
+
+SEND passes through a 2-flop synchronizer and edge detector. The byte is captured and the start bit begins on the
+third clock edge after SEND rises.
+
+![SEND synchronizer and start bit](docs/images/02_send_synchronizer_zoom.png)
+
+The baud counter counts 0 to 1041; its tick advances the FSM to the next bit.
+
+![Baud counter tick](docs/images/03_baud_counter_tick.png)
+
+All seven test bytes sent back to back, each decoded correctly by the testbench receiver.
+
+![All test bytes](docs/images/04_all_bytes_sequence.png)
+
+A second SEND (0x7E) in the middle of the 0x81 frame is ignored, so the frame is not corrupted.
+
+![SEND ignored while busy](docs/images/05_send_ignored_while_busy.png)
+
+After reset, TX idles high, BUSY is low and READY is high.
+
+![Reset and idle](docs/images/06_reset_and_idle.png)
+
 ### On the chip
 
 1. On the Tiny Tapeout demo board, select this project and set the clock to 10 MHz.
@@ -70,6 +97,30 @@ Things to watch on real hardware:
 - **Voltage.** The chip only drives TX, so a 5 V Arduino can read it directly. Never drive the chip's pins from 5 V.
 
 See the [datasheet](docs/info.md) for details.
+
+## Layout
+
+The final SKY130 layout of the 1x1 tile (161 x 111.5 µm). The placed and routed logic sits in the top-right; the rest
+of the tile is filled with decoupling capacitor and filler cells. An interactive 3D view is at
+https://ayush-hegde.github.io/Tapeout/.
+
+![Full tile layout](docs/images/layout_full.png)
+
+Zoom on the placed and routed logic, and a close-up around one of the 28 flip-flops:
+
+![Logic area](docs/images/layout_logic_zoom.png)
+
+![Flip-flop close-up](docs/images/layout_flipflop_closeup.png)
+
+Layer colours: green = diffusion, red = poly, purple = li1, blue = metal 1, pink = metal 2, teal = metal 3,
+orange = metal 4.
+
+| Item | Value |
+|---|---|
+| Tile | 1x1, 161 x 111.5 µm |
+| Flip-flops | 28 (`sky130_fd_sc_hd__dfxtp_2`) |
+| Logic cells | 194, including clock tree, hold buffers and tie cells |
+| Transistors | 2,356 in active cells (1,834 in core logic) |
 
 ## Open-source flow
 

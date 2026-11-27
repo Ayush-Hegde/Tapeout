@@ -21,6 +21,12 @@ standard UART frame: 8N1, meaning 1 start bit, 8 data bits (LSB first), no parit
 
 One frame takes 10 bit periods, about 1.04 ms.
 
+![Simulated UART frame for 0x55](images/01_single_frame_0x55.png)
+
+The final layout uses 28 flip-flops and 194 logic cells (2,356 transistors) in one 1x1 tile:
+
+![Final SKY130 layout](images/layout_full.png)
+
 ## How to test
 
 1. Set the project clock to 10 MHz and reset the design. TX (`uo[0]`) idles high and READY (`uo[2]`) is high.
